@@ -1,0 +1,46 @@
+html {
+  min-width: 100%;
+  height: 100%;
+}
+
+body {
+}
+#hideBtn {
+  position: absolute;
+}
+#popTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+#popTitle .leftIcon,
+#popTitle .rightIcon {
+  width: 34px;
+  height: 38px;
+  background-image: url(/img/button.png);
+  background-position-y: center;
+  display: inline-block;
+}
+#popTitle .leftIcon {
+  background-position-x: left;
+}
+#popTitle .rightIcon {
+  background-position-x: right;
+}
+#titleName {
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+}
+#hideShow {
+  color: white;
+  padding-left: 10px;
+  padding-top: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.layui-table-header {
+  display: none;
+}

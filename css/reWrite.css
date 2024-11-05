@@ -1,0 +1,89 @@
+.layui-form-label,
+.layui-input[disabled],
+.layui-textarea[disabled],
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
+.leaflet-touch .leaflet-bar a,
+.leaflet-touch .leaflet-control-layers,
+.layui-layer,
+.layui-layer-title,
+.layui-layer-setwin span,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip,
+.layui-tab-bar {
+  background-color: rgba(10, 58, 44, 0.8);
+  color: white;
+}
+.layui-tab-title,
+.layui-table-view .layui-table,
+.layui-table-page .layui-laypage a,
+.layui-table-page .layui-laypage span {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+.leaflet-bar a.leaflet-disabled {
+  color: #666;
+}
+/* 设置第一个按钮（确定）的颜色 */
+.layui-layer-btn0 {
+  background-color: rgba(38, 166, 128, 1) !important; /* 背景颜色 */
+}
+
+/* 设置第二个按钮（取消）的颜色 */
+.layui-layer-btn1 {
+  background-color: #0f0; /* 背景颜色 */
+}
+
+.layui-table-view .layui-table td,
+.layui-table-view .layui-table th,
+.layui-table-view .layui-table th span,
+.layui-table-view {
+  border-left: none;
+  border-right: none;
+}
+.layui-table-checked {
+  background-color: rgba(0, 0, 0, 0);
+}
+.layui-table-checked.layui-table-click,
+.layui-table-checked.layui-table-hover {
+  background-color: #26a680;
+}
+.layui-table-click,
+.layui-table-hover,
+.layui-table[lay-even] tbody tr:nth-child(even) {
+  background-color: #26a680;
+}
+button {
+  background-color: #16baaa !important;
+  color: #fff;
+  border: none !important;
+}
+
+.layui-table-init {
+  background: none !important;
+}
+
+/*滚动条样式start---------------------------------------------------*/
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 5px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(200, 200, 200, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
+}
+/*滚动条样式end-----------------------------------------------------*/
