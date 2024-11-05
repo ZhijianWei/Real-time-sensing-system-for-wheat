@@ -1,0 +1,752 @@
+[
+    {
+        "menu": "dataProduction",
+        "name": "数据生产",
+        "action": "showPop",
+        "children": []
+    },
+    {
+        "menu": "dataManagement",
+        "name": "数据管理",
+        "action": "showPop",
+        "children": []
+    },
+    {
+        "menu": "",
+        "name": "立体监测",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "",
+                "name": "卫星数据",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "张家港全域麦田分布-中分分类",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/zhangjiagang/zhangjiagang/MapServer",
+                        "extent": [
+                            120.35591125488283,
+                            31.70947636001935,
+                            120.87501525878908,
+                            32.024959860439054
+                        ],
+                        "type": "dynamicMapLayer"
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "无人机数据",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "兴化园区无人机数据",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/Xinghua/Xinghua/MapServer",
+                        "extent": [
+                            119.87755731227597,
+                            33.07163767986086,
+                            119.89676275244288,
+                            33.094015013797716
+                        ],
+                        "type": "dynamicMapLayer"
+                    },
+                    {
+                        "title": "坝头园区无人机数据",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/hainan/hainan_sy_batou/MapServer",
+                        "extent": [
+                            109.1456723213196,
+                            18.382485836662116,
+                            109.1386342048645,
+                            18.386721234510908
+                        ],
+                        "type": "dynamicMapLayer"
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "监测站数据",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "兴化园区温湿度数据",
+                        "type": "echartsPop"
+                    },
+                    {
+                        "title": "白马园区温湿度数据",
+                        "type": "echartsPop"
+                    },
+                    {
+                        "title": "张家港园区温湿度数据",
+                        "type": "echartsPop"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "menu": "",
+        "name": "数字麦田",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "",
+                "name": "田块识别",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "遂宁田块AI识别成果",
+                        "url": "http://110.41.138.93:8888/geoserver/topp/wms?service=WMS&version=1.1.0&request=GetMap&layers=topp%3Astates&bbox=-124.73142200000001%2C24.955967%2C-66.969849%2C49.371735&width=768&height=330&srs=EPSG%3A4326&styles=&format=image%2Fpng",
+                        "extent": [
+                            120.23437500000001,
+                            33.07198015432512,
+                            119.93031978607179,
+                            32.84407980015274
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": "netcia_xjn:xhrice09_reclassify",
+                        "format": "image/png"
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "水稻识别",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "兴化市水稻直播稻AI识别成果",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/WheatEnvironmentalPerceptionSystem/WheatIdentification/MapServer",
+                        "extent": [
+                            120.23437500000001,
+                            33.07198015432512,
+                            119.93031978607179,
+                            32.84407980015274
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": "netcia_xjn:xhrice09_reclassify",
+                        "format": "image/png"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "menu": "",
+        "name": "光谱指数",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "",
+                "name": "NDRE",
+                "action": "showPopMenu",
+                "children": [],
+                "data": []
+            },
+            {
+                "menu": "",
+                "name": "NDVI",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "邓州园区NDVI-20230214",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230224",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            1
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230303",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            2
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230315",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            3
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230328",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            4
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230410",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            5
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230428",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            6
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230510",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            7
+                        ]
+                    },
+                    {
+                        "title": "邓州园区NDVI-20230526",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiNDVI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            8
+                        ]
+                    },
+                    {
+                        "title": "江苏省NDVI-2022年3月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            116.1968994140625,
+                            35.007502842952896,
+                            122.4755859375,
+                            30.755998458321667
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            57,
+                            72,
+                            73
+                        ]
+                    },
+                    {
+                        "title": "江苏省NDVI-2022年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            116.1968994140625,
+                            35.007502842952896,
+                            122.4755859375,
+                            30.755998458321667
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            57,
+                            72,
+                            74
+                        ]
+                    },
+                    {
+                        "title": "江苏省NDVI-2022年5月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            116.1968994140625,
+                            35.007502842952896,
+                            122.4755859375,
+                            30.755998458321667
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            57,
+                            72,
+                            75
+                        ]
+                    },
+                    {
+                        "title": "兴化市NDVI-2022年3月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            143,
+                            144
+                        ]
+                    },
+                    {
+                        "title": "兴化市NDVI-2022年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            143,
+                            145
+                        ]
+                    },
+                    {
+                        "title": "兴化市NDVI-2022年5月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            143,
+                            146
+                        ]
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "NDWI",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "EVI",
+                "action": "showPopMenu",
+                "children": []
+            }
+        ]
+    },
+    {
+        "menu": "",
+        "name": "长势监测",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "",
+                "name": "叶绿素含量",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "兴化市LAI-2022年3月",
+                        "url": "http://110.41.138.93:8888/geoserver/netcia_xjn/wms?service=WMS",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": "netcia_xjn:xh_ccc09",
+                        "format": "image/png"
+                    },
+                    {
+                        "title": "兴化市LAI-2022年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            150,
+                            152
+                        ]
+                    },
+                    {
+                        "title": "兴化市LAI-2022年5月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            150,
+                            153
+                        ]
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "氮含量",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "氮累积量",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "含水量",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "叶面积指数",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "江苏省LAI-2020年3月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            116.1968994140625,
+                            35.007502842952896,
+                            122.4755859375,
+                            30.755998458321667
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    {
+                        "title": "江苏省LAI-2020年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            116.1968994140625,
+                            35.007502842952896,
+                            122.4755859375,
+                            30.755998458321667
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            1,
+                            2,
+                            4
+                        ]
+                    },
+                    {
+                        "title": "兴化市LAI-2022年3月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            150,
+                            151
+                        ]
+                    },
+                    {
+                        "title": "兴化市LAI-2022年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            150,
+                            152
+                        ]
+                    },
+                    {
+                        "title": "兴化市LAI-2022年5月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            150,
+                            153
+                        ]
+                    },
+                    {
+                        "title": "邓州园区LAI-20230328",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiLAI_fs/MapServer",
+                        "extent": [
+                            111.93185479756433,
+                            32.68837979226515,
+                            112.02767619868318,
+                            32.73579906224466
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0
+                        ]
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "生物量",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "病情指数",
+                "action": "showPopMenu",
+                "children": []
+            }
+        ]
+    },
+    {
+        "menu": "",
+        "name": "生产力预测",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "",
+                "name": "产量",
+                "action": "showPopMenu",
+                "children": [],
+                "data": [
+                    {
+                        "title": "邓州园区估产-20230410",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiYIELD_hx/MapServer",
+                        "extent": [
+                            111.92261695861818,
+                            32.70364168637655,
+                            111.95122003555299,
+                            32.69222948538011
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            5
+                        ]
+                    },
+                    {
+                        "title": "邓州园区估产-20230428",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiYIELD_hx/MapServer",
+                        "extent": [
+                            111.92261695861818,
+                            32.70364168637655,
+                            111.95122003555299,
+                            32.69222948538011
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            6
+                        ]
+                    },
+                    {
+                        "title": "邓州园区估产-20230510",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiYIELD_hx/MapServer",
+                        "extent": [
+                            111.92261695861818,
+                            32.70364168637655,
+                            111.95122003555299,
+                            32.69222948538011
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            7
+                        ]
+                    },
+                    {
+                        "title": "邓州园区估产-20230526",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/dengzhou/DZyumiYIELD_hx/MapServer",
+                        "extent": [
+                            111.92261695861818,
+                            32.70364168637655,
+                            111.95122003555299,
+                            32.69222948538011
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            0,
+                            8
+                        ]
+                    },
+                    {
+                        "title": "兴化市NDVI-2021年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            114,
+                            139,
+                            140
+                        ]
+                    },
+                    {
+                        "title": "兴化市NDVI-2022年4月",
+                        "url": "https://arcgis.snfarming.com:6443/arcgis/rest/services/ZhiHuiNongZuo/JiangSuXinghua_NDVI_LAI_LNA/MapServer",
+                        "extent": [
+                            119.60266113281251,
+                            33.213414392242655,
+                            120.32501220703126,
+                            32.65325087996883
+                        ],
+                        "type": "dynamicMapLayer",
+                        "layers": [
+                            85,
+                            142,
+                            167,
+                            168
+                        ]
+                    }
+                ]
+            },
+            {
+                "menu": "",
+                "name": "蛋白质含量",
+                "action": "showPopMenu",
+                "children": []
+            },
+            {
+                "menu": "",
+                "name": "淀粉含量",
+                "action": "showPopMenu",
+                "children": []
+            }
+        ]
+    },
+    {
+        "menu": "zhuanTiTu",
+        "name": "专题产品",
+        "action": "showPop",
+        "children": []
+    },
+    {
+        "menu": "agricultureReport",
+        "name": "农情报告",
+        "action": "showPop",
+        "children": []
+    },
+    {
+        "menu": "",
+        "name": "系统管理",
+        "action": "showSecond",
+        "children": [
+            {
+                "menu": "contactUs",
+                "name": "联系我们",
+                "action": "showPop",
+                "children": []
+            },
+            {
+                "menu": "exit",
+                "name": "退出登录",
+                "action": "showConfirm",
+                "children": []
+            }
+        ]
+    }
+]

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/js/leaflet/leaflet.css" rel="stylesheet">
+    <link href="/js/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/reWrite.css" rel="stylesheet">
+
+
+    <script src="/js/home/loginLogout.js"></script>
+    <script src="/js/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="/js/leaflet/leaflet.js"></script>
+    <script src="/js/leaflet/esri-leaflet/esri-leaflet.js"></script>
+    <script src="/js/layui/layui.js"></script>
+    <script src="/js/home/globalVars.js"></script>
+    <script src="/js/home/menuLayer.js"></script>
+    <script src="/js/home/menu.js"></script>
+    <script src="/js/home/map.js"></script>
+    <script src="/js/home/test.js"></script>
+
+    <title>小麦-环境信息实时感知系统</title>
+</head>
+
+<body>
+    <div id="header">
+        <div id="menu">
+            <div id="menu_left"></div>
+            <div id="menu_right"></div>
+        </div>
+        <div id="middle_title">
+            <div id="middle_title_content">
+                <div id="icon"></div>
+                <div id="title_text">水稻-环境信息实时感知系统</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        menuInit();
+        mapInit();
+
+
+        $("#icon").click(function (e) {
+            if (map.hasLayer(G.chinaWheatLayer)) {
+                map.removeLayer(G.chinaWheatLayer);
+            } else {
+                map.addLayer(G.chinaWheatLayer);
+            }
+        });
+    </script>
+</body>
+
+</html>
