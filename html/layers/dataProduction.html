@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/js/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/reWrite.css" rel="stylesheet">
+
+    <script src="/js/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="/js/layui/layui.js"></script>
+
+    <style>
+        html {
+            min-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-container">
+        <button class="layui-btn" id="addProductionData" style="margin-top: 15px;">新增数据生产</button>
+        <br><br>
+        <table id="productionRecords" lay-filter="productionRecords"></table>
+    </div>
+
+    <script>
+        layui.use(['table'], function () {
+            var table = layui.table;
+
+            // 假数据
+            var fakeData = {
+                "code": 0,
+                "msg": "",
+                "count": 20,
+                "data": [
+                    { "id": "1", "dataSource": "卫星", "dataDate": "2023-10-12", "sensor": "PMS/GF-1", "spectrum": ["NDRE", "EVI"], "agriParam": ["叶面积指数", "生物量"] },
+                    { "id": "2", "dataSource": "无人机", "dataDate": "2023-10-11", "sensor": "Hspec/UAV", "spectrum": ["EVI"], "agriParam": ["生物量", "氮含量"] },
+                    { "id": "3", "dataSource": "卫星", "dataDate": "2023-10-10", "sensor": "OLI/Landsat-8", "spectrum": ["NDVI", "NDWI"], "agriParam": ["氮含量", "叶绿素含量"] },
+                    { "id": "4", "dataSource": "无人机", "dataDate": "2023-10-09", "sensor": "Airphen/UAV", "spectrum": ["NDWI", "EVI"], "agriParam": ["叶绿素含量", "氮累积量"] },
+                    { "id": "5", "dataSource": "卫星", "dataDate": "2023-10-08", "sensor": "MSI/Sentinel-2", "spectrum": ["NDRE"], "agriParam": ["氮累积量", "产量"] },
+                    { "id": "6", "dataSource": "无人机", "dataDate": "2023-10-07", "sensor": "Hspec/UAV", "spectrum": ["EVI", "NDVI"], "agriParam": ["产量", "叶面积指数"] },
+                    { "id": "7", "dataSource": "卫星", "dataDate": "2023-10-06", "sensor": "PMS/GF-2", "spectrum": ["NDVI"], "agriParam": ["叶面积指数", "生物量"] },
+                    { "id": "8", "dataSource": "无人机", "dataDate": "2023-10-05", "sensor": "Airphen/UAV", "spectrum": ["NDWI", "EVI"], "agriParam": ["生物量", "含水量"] },
+                    { "id": "9", "dataSource": "卫星", "dataDate": "2023-10-04", "sensor": "OLI/Landsat-8", "spectrum": ["NDRE", "NDVI"], "agriParam": ["氮含量", "叶绿素含量"] },
+                    { "id": "10", "dataSource": "无人机", "dataDate": "2023-10-03", "sensor": "Hspec/UAV", "spectrum": ["EVI"], "agriParam": ["叶绿素含量", "氮含量"] },
+                    { "id": "11", "dataSource": "卫星", "dataDate": "2023-10-02", "sensor": "PMS/GF-1", "spectrum": ["NDVI", "NDRE"], "agriParam": ["氮累积量", "产量"] },
+                    { "id": "12", "dataSource": "无人机", "dataDate": "2023-10-01", "sensor": "Airphen/UAV", "spectrum": ["NDWI"], "agriParam": ["产量", "叶绿素含量"] },
+                    { "id": "13", "dataSource": "卫星", "dataDate": "2023-09-30", "sensor": "MSI/Sentinel-2", "spectrum": ["NDRE", "EVI"], "agriParam": ["叶面积指数", "生物量"] },
+                    { "id": "14", "dataSource": "无人机", "dataDate": "2023-09-29", "sensor": "Hspec/UAV", "spectrum": ["EVI", "NDVI"], "agriParam": ["生物量", "氮含量"] },
+                    { "id": "15", "dataSource": "卫星", "dataDate": "2023-09-28", "sensor": "OLI/Landsat-8", "spectrum": ["NDVI"], "agriParam": ["氮含量", "叶绿素含量"] },
+                    { "id": "16", "dataSource": "无人机", "dataDate": "2023-09-27", "sensor": "Airphen/UAV", "spectrum": ["NDWI", "EVI"], "agriParam": ["叶绿素含量", "氮累积量"] },
+                    { "id": "17", "dataSource": "卫星", "dataDate": "2023-09-26", "sensor": "PMS/GF-2", "spectrum": ["NDRE"], "agriParam": ["氮累积量", "叶面积指数"] },
+                    { "id": "18", "dataSource": "无人机", "dataDate": "2023-09-25", "sensor": "Hspec/UAV", "spectrum": ["EVI", "NDVI"], "agriParam": ["产量", "生物量"] },
+                    { "id": "19", "dataSource": "卫星", "dataDate": "2023-09-24", "sensor": "MSI/Sentinel-2", "spectrum": ["NDVI"], "agriParam": ["叶面积指数", "含水量"] },
+                    { "id": "20", "dataSource": "无人机", "dataDate": "2023-09-23", "sensor": "Airphen/UAV", "spectrum": ["NDWI", "EVI"], "agriParam": ["生物量", "叶绿素含量"] }
+                ]
+            };
+
+
+            // 表格配置
+            table.render({
+                elem: '#productionRecords',
+                data: fakeData.data,  // 使用假数据
+                page: true,
+                cols: [[
+                    { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' },
+                    { field: 'dataSource', title: '数据来源', width: 120 },
+                    { field: 'dataDate', title: '数据日期', width: 120 },
+                    { field: 'sensor', title: '传感器', width: 200 },
+                    { field: 'spectrum', title: '光谱指数', width: 200 },
+                    { field: 'agriParam', title: '农学参数', width: 250 }
+                ]]
+            });
+
+            // 新增数据生产按钮点击事件
+            $('#addProductionData').click(function () {
+                parent.layer.open({
+                    type: 2 //Page层类型
+                    , area: ['1210px', '595px']
+                    , offset: ['99px', 'calc(50% - 1210px / 2)'] // 距顶部99px
+                    , title: '数据生产'
+                    , shade: 0.5 //遮罩透明度
+                    , maxmin: false //允许全屏最小化
+                    , anim: 'slideDown' //0-6的动画形式，-1不开启
+                    , content: '/html/layers/dataProductionAdd.html'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

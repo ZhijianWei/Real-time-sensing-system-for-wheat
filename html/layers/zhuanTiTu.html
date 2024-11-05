@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/js/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/reWrite.css" rel="stylesheet">
+
+    <script src="/js/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="/js/layui/layui.js"></script>
+
+    <style>
+        html {
+            min-width: 100%;
+        }
+
+        .layui-tab-item>div {
+            width: 100% !important;
+        }
+
+        .layui-tab-item>div>img {
+            width: 80% !important;
+            margin: 10px 0;
+        }
+
+        #imageFiles {
+            height: 100%;
+            overflow: auto;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .layui-tab-title {
+            text-align: center;
+        }
+
+        .layui-tab-title li {
+            width: auto !important;
+        }
+
+        .layui-tab-bar .layui-icon {
+            color: white !important;
+        }
+
+        .layui-unselect.layui-tab-bar {
+            border: none;
+            background-color: rgba(10, 58, 44, 1);
+        }
+
+        .layui-tab-item {
+            min-height: calc(100vh - 130px);
+        }
+
+        .layui-tab-content {
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body class="layui-form">
+    <div style="overflow:hidden;">
+        <div class="layui-tab layui-tab-brief" lay-filter="tab">
+            <ul class="layui-tab-title" id="folderNames"></ul>
+            <div class="layui-col-md12">
+                <select id="search" lay-search="search" lay-filter="search">
+                    <option value="">请选择</option>
+                    <option value="Demo1">Demo1</option>
+                    <option value="Demo2">Demo2</option>
+                </select>
+            </div>
+            <div class="layui-tab-content" id="imageFiles"> </div>
+        </div>
+    </div>
+    <script>
+        var dataFolders = {
+            "Folders": [
+                {
+                    "FolderName": "EVI",
+                    "ImageFiles": [
+                        "\\image\\ztt\\EVI\\EVI（横版大）.jpg",
+                        "\\image\\ztt\\EVI\\EVI（横版小）.jpg",
+                        "\\image\\ztt\\EVI\\EVI（竖版大）.jpg",
+                        "\\image\\ztt\\EVI\\EVI（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "NDRE",
+                    "ImageFiles": [
+                        "\\image\\ztt\\NDRE\\NDRE（横版大）.jpg",
+                        "\\image\\ztt\\NDRE\\NDRE（横版小）.jpg",
+                        "\\image\\ztt\\NDRE\\NDRE（竖版大）.jpg",
+                        "\\image\\ztt\\NDRE\\NDRE（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "NDVI",
+                    "ImageFiles": [
+                        "\\image\\ztt\\NDVI\\NDVI（横版大）.jpg",
+                        "\\image\\ztt\\NDVI\\NDVI（横版小）.jpg",
+                        "\\image\\ztt\\NDVI\\NDVI（竖版大）.jpg",
+                        "\\image\\ztt\\NDVI\\NDVI（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "NDWI",
+                    "ImageFiles": [
+                        "\\image\\ztt\\NDWI\\NDWI（横版大）.jpg",
+                        "\\image\\ztt\\NDWI\\NDWI（横版小）.jpg",
+                        "\\image\\ztt\\NDWI\\NDWI（竖版大).jpg",
+                        "\\image\\ztt\\NDWI\\NDWI（竖版大）.jpg",
+                        "\\image\\ztt\\NDWI\\NDWI（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "冠层叶绿素含量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\冠层叶绿素含量\\冠层叶绿素含量（横版大）.jpg",
+                        "\\image\\ztt\\冠层叶绿素含量\\冠层叶绿素含量（横版小）.jpg",
+                        "\\image\\ztt\\冠层叶绿素含量\\冠层叶绿素含量（竖版大）.jpg",
+                        "\\image\\ztt\\冠层叶绿素含量\\冠层叶绿素含量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "冠层含水量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\冠层含水量\\冠层含水量（横版大）.jpg",
+                        "\\image\\ztt\\冠层含水量\\冠层含水量（横版小）.jpg",
+                        "\\image\\ztt\\冠层含水量\\冠层含水量（竖版大）.jpg",
+                        "\\image\\ztt\\冠层含水量\\冠层含水量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "叶氮含量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\叶氮含量\\叶氮含量（横版大）.jpg",
+                        "\\image\\ztt\\叶氮含量\\叶氮含量（横版小）.jpg",
+                        "\\image\\ztt\\叶氮含量\\叶氮含量（竖版大）.jpg",
+                        "\\image\\ztt\\叶氮含量\\叶氮含量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "叶氮累积量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\叶氮累积量\\叶氮积累量（横版大）.jpg",
+                        "\\image\\ztt\\叶氮累积量\\叶氮积累量（横版小）.jpg",
+                        "\\image\\ztt\\叶氮累积量\\叶氮积累量（竖版大）.jpg",
+                        "\\image\\ztt\\叶氮累积量\\叶氮积累量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "叶面积指数",
+                    "ImageFiles": [
+                        "\\image\\ztt\\叶面积指数\\叶面积指数（横版大）.jpg",
+                        "\\image\\ztt\\叶面积指数\\叶面积指数（横版大）1.jpg",
+                        "\\image\\ztt\\叶面积指数\\叶面积指数（横版小）.jpg",
+                        "\\image\\ztt\\叶面积指数\\叶面积指数（竖版大）.jpg",
+                        "\\image\\ztt\\叶面积指数\\叶面积指数（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "地块",
+                    "ImageFiles": [
+                        "\\image\\ztt\\地块\\地块（横版大）.jpg",
+                        "\\image\\ztt\\地块\\地块（横版小）.jpg",
+                        "\\image\\ztt\\地块\\地块（竖版大）.jpg",
+                        "\\image\\ztt\\地块\\地块（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "生物量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\生物量\\生物量（横版大）.jpg",
+                        "\\image\\ztt\\生物量\\生物量（横版小）.jpg",
+                        "\\image\\ztt\\生物量\\生物量（竖版大）.jpg",
+                        "\\image\\ztt\\生物量\\生物量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "籽粒产量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\籽粒产量\\籽粒产量（横版大）.jpg",
+                        "\\image\\ztt\\籽粒产量\\籽粒产量（横版小）.jpg",
+                        "\\image\\ztt\\籽粒产量\\籽粒产量（竖版大）.jpg",
+                        "\\image\\ztt\\籽粒产量\\籽粒产量（竖版小）.jpg"
+                    ]
+                },
+                {
+                    "FolderName": "籽粒蛋白质含量",
+                    "ImageFiles": [
+                        "\\image\\ztt\\籽粒蛋白质含量\\籽粒蛋白质含量（横版大）.jpg",
+                        "\\image\\ztt\\籽粒蛋白质含量\\籽粒蛋白质含量（横版小）.jpg",
+                        "\\image\\ztt\\籽粒蛋白质含量\\籽粒蛋白质含量（竖版大）.jpg",
+                        "\\image\\ztt\\籽粒蛋白质含量\\籽粒蛋白质含量（竖版小）.jpg"
+                    ]
+                }
+            ]
+        };
+        layui.use(['element', 'form'], function () {
+            var element = layui.element,
+                form = layui.form;
+
+            // 动态生成tab标签和对应的轮播图
+            for (var i = 0; i < dataFolders.Folders.length; i++) {
+                var folder = dataFolders.Folders[i];
+
+                // 添加tab标题
+                var title = '<li>' + folder.FolderName + '</li>';
+                document.getElementById('folderNames').innerHTML += title;
+
+                // 添加图内容
+                var content = '<div class="layui-tab-item">';
+
+                for (var j = 0; j < folder.ImageFiles.length; j++) {
+                    content += '<div><img src="' + folder.ImageFiles[j] + '" alt="image" onclick="showBigImage(\'' + encodeURIComponent(folder.ImageFiles) + '\',' + j + ');" ></div>';
+                }
+                content += '</div>';
+                document.getElementById('imageFiles').innerHTML += content;
+            }
+
+            // 重新渲染tabs组件
+            element.render('tab');
+
+            element.on('tab(tab)', function (data) {
+                initSearch(data);
+                initPic(data);
+            });
+
+            function initPic(data) {
+                var folder = dataFolders.Folders[data.index];
+                $(".layui-tab-item.layui-show").empty();
+                var content = '';
+                for (var j = 0; j < folder.ImageFiles.length; j++) {
+                    content += '<div><img src="' + folder.ImageFiles[j] + '" alt="image" onclick="showBigImage(\'' + encodeURIComponent(folder.ImageFiles) + '\',' + j + ');" ></div>';
+                }
+                $(".layui-tab-item.layui-show")[0].innerHTML += content;
+            }
+
+            function initSearch(data) {
+                $('#search').empty();
+                var newData = [{ value: null, text: "" }];
+                for (let i = 0; i < dataFolders.Folders[data.index].ImageFiles.length; i++) {
+                    let filePath = dataFolders.Folders[data.index].ImageFiles[i];
+                    let text = dataFolders.Folders[data.index].ImageFiles[i];
+                    text = text.substring(text.lastIndexOf('\\') + 1);
+                    const item = { value: i, text: text, filepath: filePath, folderindex: data.index };
+                    newData.push(item);
+                }
+                newData.forEach(function (item) {
+                    var option = new Option(item.text, item.value);
+                    // 添加自定义数据属性
+                    $(option).attr('data-filepath', item.filepath);
+                    $(option).attr('data-folderindex', item.folderindex);
+                    $('#search').append($(option));
+                });
+                form.render('select');
+            }
+
+            form.on('select(search)', function (data) {
+                const value = Number(data.value) + 1;
+                const path = data.elem[value].dataset.filepath;
+                if (path !== undefined) {
+                    $(".layui-tab-item.layui-show").empty();
+                    var content = '<div><img src="' + path + '" alt="image" onclick="showBigImage([\'' + encodeURIComponent(path) + '\'],' + 0 + ');" ></div>';
+                    $(".layui-tab-item.layui-show")[0].innerHTML += content;
+                } else {
+
+                }
+            });
+
+            (function () {
+                $(".layui-tab-title").find("li")[0].click();
+            })();
+        });
+
+        function showBigImage(ImageFiles, showIndex) {
+            let data = [];
+            let ImageFilesArray = decodeURIComponent(ImageFiles).split(',');
+            for (let i = 0; i < ImageFilesArray.length; i++) {
+                let img = ImageFilesArray[i];
+                data.push({
+                    "alt": img.substring(img.lastIndexOf('\\') + 1),
+                    "src": img,
+                });
+            }
+            parent.layer.photos({
+                photos: {
+                    "title": "专题产品",
+                    "start": showIndex,
+                    "data": data
+                },
+                offset: 'b',
+                anim: 5, // 动画类型
+                shade: 0.8, // 遮罩透明度     
+            });
+        }
+    </script>
+</body>
+
+</html>

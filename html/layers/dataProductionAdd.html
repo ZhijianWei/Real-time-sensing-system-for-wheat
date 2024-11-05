@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/js/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/reWrite.css" rel="stylesheet">
+
+    <script src="/js/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="/js/layui/layui.js"></script>
+
+    <style>
+        .layui-elem-field legend,
+        .layui-field-box,
+        label,
+        .layui-form-checkbox[lay-skin=primary]>div {
+            color: white;
+        }
+
+        .layui-field-box>.layui-form-checkbox {
+            margin: 10px 0;
+        }
+
+        .layui-field-box {
+            padding: 0 15px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layui-container layui-form">
+        <!-- 选择数据源 -->
+        <fieldset class="layui-elem-field" style="margin-top: 15px;">
+            <legend>选择数据源</legend>
+            <div class="layui-field-box">
+                <div>
+                    <label>数据来源：</label>
+                    <input type="radio" name="dataSource" checked value="satellite" title="卫星">
+                    <input type="radio" name="dataSource" value="drone" title="无人机">
+                </div>
+                <br>
+                <div>
+                    <label>数据日期：</label>
+                    <input type="text" class="layui-input" id="datePicker">
+                </div>
+                <br>
+                <div>
+                    <label>传感器：</label>
+                    <br>
+                    <input type="radio" name="satelliteSource" checked value="PMS/GF-1" title="PMS/GF-1">
+                    <input type="radio" name="satelliteSource" value="PMS/GF-2" title="PMS/GF-2">
+                    <input type="radio" name="satelliteSource" value="AHSI/GF-5" title="AHSI/GF-5">
+                    <input type="radio" name="satelliteSource" value="MRC/GF-6" title="MRC/GF-6">
+                    <input type="radio" name="satelliteSource" value="AHSI/ZY1-02D" title="AHSI/ZY1-02D">
+                    <input type="radio" name="satelliteSource" value="MSI/Sentinel-2" title="MSI/Sentinel-2">
+                    <input type="radio" name="satelliteSource" value="OLI/Landsat-8" title="OLI/Landsat-8">
+                    <input type="radio" name="satelliteSource" value="OLI-2/Landsat-9" title="OLI-2/Landsat-9">
+                    <br>
+                    <input type="radio" name="satelliteSource" value="Airphen/UAV" title="Airphen/UAV">
+                    <input type="radio" name="satelliteSource" value="Hspec/UAV" title="Hspec/UAV">
+                </div>
+                <br>
+                <div>
+                    <label>上传遥感数据：</label>
+                    <button type="button" class="layui-btn" id="uploadBtn">
+                        <i class="layui-icon">&#xe67c;</i>上传文件(影像)
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- 光谱指数选择 -->
+        <fieldset class="layui-elem-field">
+            <legend>光谱指数选择</legend>
+            <div class="layui-field-box">
+                <input type="checkbox" name="spectrum" checked title="NDRE">
+                <input type="checkbox" name="spectrum" title="NDVI">
+                <input type="checkbox" name="spectrum" title="NDWI">
+                <input type="checkbox" name="spectrum" title="EVI">
+            </div>
+        </fieldset>
+
+        <!-- 计算农学参数 -->
+        <fieldset class="layui-elem-field">
+            <legend>计算农学参数</legend>
+            <div class="layui-field-box">
+                <input type="checkbox" name="agriParam" checked title="叶面积指数">
+                <input type="checkbox" name="agriParam" title="生物量">
+                <input type="checkbox" name="agriParam" title="含水量">
+                <input type="checkbox" name="agriParam" title="叶绿素含量">
+                <input type="checkbox" name="agriParam" title="氮含量">
+                <input type="checkbox" name="agriParam" title="氮累积量">
+                <input type="checkbox" name="agriParam" title="产量">
+                <input type="checkbox" name="agriParam" title="蛋白质含量">
+            </div>
+        </fieldset>
+
+        <!-- 数据生产按钮 -->
+        <button class="layui-btn" id="produceData">开始数据生产</button>
+        <div id="progressBar"></div>
+
+    </div>
+
+    <script>
+        layui.use(['form', 'upload', 'laydate', 'element'], function () {
+            var form = layui.form,
+                upload = layui.upload,
+                laydate = layui.laydate,
+                element = layui.element;
+
+            // 日期选择器
+            laydate.render({
+                elem: '#datePicker'
+            });
+
+            // 文件上传
+            upload.render({
+                elem: '#uploadBtn',
+                //url: '/upload/', // 这个url实际上不会被调用，但为了保持代码的完整性，我们仍然保留它
+                before: function (obj) {
+                    // 使用Layer提示上传成功
+                    layer.msg('上传成功', { icon: 1, time: 2000 });  // icon: 1 表示显示一个成功的图标，time: 2000 表示提示将持续2秒
+                    return false;  // 阻止文件上传
+                },
+                done: function (res) {
+                    console.log(res);
+                }
+            });
+
+            // 数据生产
+            $('#produceData').click(function () {
+                parent.layer.open({
+                    type: 1
+                    , title: false //不显示标题栏
+                    , closeBtn: false
+                    , area: '300px;'
+                    , shade: 0.8
+                    , id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    , btn: ['确定']
+                    , btnAlign: 'c'
+                    , moveType: 1 //拖拽模式，0或者1
+                    , content: '<div style="padding: 50px; line-height: 22px; background-color: #072A1F; color: #fff; font-weight: 300;">任务已提交后台进行计算！</div>'
+                    , success: function (layero) {
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

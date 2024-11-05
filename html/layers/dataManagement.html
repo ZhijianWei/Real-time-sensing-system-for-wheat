@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/reset.css" rel="stylesheet">
+    <link href="/js/layui/css/layui.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/reWrite.css" rel="stylesheet">
+
+    <script src="/js/jQuery/jquery-3.7.1.min.js"></script>
+    <script src="/js/layui/layui.js"></script>
+
+    <style>
+        html {
+            min-width: 100%;
+        }
+
+        .layui-tab .layui-tab-title li {
+            width: 33.33%;
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-tab layui-tab-brief" lay-filter="dataTab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">卫星数据</li>
+            <li>无人机数据</li>
+            <li>物联网数据</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show">
+                <table id="satelliteTable" lay-filter="satelliteTable"></table>
+            </div>
+            <div class="layui-tab-item">
+                <table id="droneTable" lay-filter="droneTable"></table>
+            </div>
+            <div class="layui-tab-item">
+                <table id="iotTable" lay-filter="iotTable"></table>
+            </div>
+        </div>
+    </div>
+    <script>
+        layui.use(['element', 'table'], function () {
+            var element = layui.element;
+            var table = layui.table;
+
+            // 卫星数据表格
+            table.render({
+                elem: '#satelliteTable',
+                cols: [[
+                    { field: 'id', title: '数据标识' },
+                    { field: 'source', title: '数据来源' },
+                    { field: 'time', title: '数据时间' },
+                    { field: 'base', title: '覆盖基地' }
+                ]],
+                data: [
+                    { id: 'S001', source: 'Landsat 8', time: '2023-10-01', base: '兴化园区' },
+                    { id: 'S002', source: '高分一号', time: '2023-10-02', base: '坝头园区' },
+                    { id: 'S003', source: 'Landsat 7', time: '2023-10-03', base: '张家港园区' },
+                    { id: 'S004', source: '高分二号', time: '2023-10-04', base: '白马园区' },
+                    { id: 'S005', source: 'Landsat 9', time: '2023-10-05', base: '崇州园区' },
+                    { id: 'S006', source: '高分三号', time: '2023-10-06', base: '兴化园区' },
+                    { id: 'S007', source: 'Landsat 5', time: '2023-10-07', base: '坝头园区' },
+                    { id: 'S008', source: '高分四号', time: '2023-10-08', base: '张家港园区' },
+                    { id: 'S009', source: 'Landsat 8', time: '2023-10-09', base: '白马园区' },
+                    { id: 'S010', source: '高分一号', time: '2023-10-10', base: '崇州园区' }
+                ], limits: [10, 20, 30, 40, 50, 60, 70, 80, 90, 10000]
+                , page: true
+            });
+
+            // 无人机数据表格
+            table.render({
+                elem: '#droneTable',
+                cols: [[
+                    { field: 'id', title: '数据标识' },
+                    { field: 'source', title: '数据来源' },
+                    { field: 'time', title: '数据时间' },
+                    { field: 'base', title: '覆盖基地' }
+                ]],
+                data: [
+                    { id: 'D001', source: '大疆 Mavic', time: '2023-10-01', base: '兴化园区' },
+                    { id: 'D002', source: '大疆 Inspire', time: '2023-10-02', base: '坝头园区' },
+                    { id: 'D003', source: '大疆 Phantom', time: '2023-10-03', base: '张家港园区' },
+                    { id: 'D004', source: '大疆 Mavic Air', time: '2023-10-04', base: '白马园区' },
+                    { id: 'D005', source: '大疆 Spark', time: '2023-10-05', base: '崇州园区' },
+                    { id: 'D006', source: '大疆 Mavic 2', time: '2023-10-06', base: '兴化园区' },
+                    { id: 'D007', source: '大疆 Mavic Mini', time: '2023-10-07', base: '坝头园区' },
+                    { id: 'D008', source: '大疆 Inspire 2', time: '2023-10-08', base: '张家港园区' },
+                    { id: 'D009', source: '大疆 Phantom 4', time: '2023-10-09', base: '白马园区' },
+                    { id: 'D010', source: '大疆 Mavic Pro', time: '2023-10-10', base: '崇州园区' }
+                ], limits: [10, 20, 30, 40, 50, 60, 70, 80, 90, 10000]
+                , page: true
+            });
+
+            // 物联网数据表格
+            table.render({
+                elem: '#iotTable',
+                cols: [[
+                    { field: 'id', title: '数据标识' },
+                    { field: 'source', title: '数据来源' },
+                    { field: 'time', title: '数据时间' },
+                    { field: 'base', title: '覆盖基地' }
+                ]],
+                data: [
+                    { id: 'I001', source: '虫情传感器', time: '2023-10-01', base: '兴化园区' },
+                    { id: 'I002', source: '土壤湿度传感器', time: '2023-10-02', base: '坝头园区' },
+                    { id: 'I003', source: '气象传感器', time: '2023-10-03', base: '张家港园区' },
+                    { id: 'I004', source: '作物长势监测器', time: '2023-10-04', base: '白马园区' },
+                    { id: 'I005', source: '孢子传感器', time: '2023-10-05', base: '崇州园区' },
+                    { id: 'I006', source: '摄像头', time: '2023-10-06', base: '兴化园区' },
+                    { id: 'I007', source: '虫情监测器', time: '2023-10-07', base: '坝头园区' },
+                    { id: 'I008', source: '土壤温度传感器', time: '2023-10-08', base: '张家港园区' },
+                    { id: 'I009', source: '气候变化探测器', time: '2023-10-09', base: '白马园区' },
+                    { id: 'I010', source: '高精度GPS', time: '2023-10-10', base: '崇州园区' }
+                ], limits: [10, 20, 30, 40, 50, 60, 70, 80, 90, 10000]
+                , page: true
+            });
+
+            // 监听标签页切换
+            element.on('tab(dataTab)', function (data) {
+                console.log(this); // 当前Tab标题所在的原始DOM元素
+                console.log(data.index); // 得到当前Tab的所在下标
+                console.log(data.elem); // 得到当前的Tab大容器
+            });
+        });
+    </script>
+</body>
+
+</html>
